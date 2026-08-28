@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubsetSharpEngine", "SubsetSharpEngine.csproj", "{DB65363D-A77D-4478-84D1-00642E9BD22E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB65363D-A77D-4478-84D1-00642E9BD22E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB65363D-A77D-4478-84D1-00642E9BD22E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB65363D-A77D-4478-84D1-00642E9BD22E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB65363D-A77D-4478-84D1-00642E9BD22E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A39D79A7-CB7A-47AD-9506-0DF21F50F1B0}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "rfiJQNk+F4c=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\SubsetSharpEngine.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bnhae\\.nuget\\packages\\raylib-cs\\8.0.0\\raylib-cs.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
