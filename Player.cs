@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 using Raylib_cs;
 
 namespace SubsetSharpEngine {
-    class Player: Entity {
-        //public Vector2 position = Vector2.Zero;
+    public class Player: Entity {
         public readonly BoxCollider collider = new BoxCollider (Vector2.Zero, new Vector2(32));
         public readonly RectangleRenderer renderer;
 
@@ -18,8 +17,8 @@ namespace SubsetSharpEngine {
             components = new object[] { collider, renderer };
         }
 
-        protected override void OnSetup () {
-        }
+        protected override void OnSetup () {}
+
         public override void Update (float dt) {
             var dir = Vector2.Zero;
             if (Raylib.IsKeyDown (KeyboardKey.D)) {
