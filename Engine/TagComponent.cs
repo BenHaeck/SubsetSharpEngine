@@ -44,8 +44,8 @@ namespace Engine {
             }
         }
 
-        public List<TEntityInfo>? GetEntitiesByTags (int tagSet) {
-            int? idxNullable = Utils.BinSearch (entitiesByTags, tagSet, static ((TTagType tag, List<TEntityInfo>) tagCollection) => tagCollection.tag.ToInt32(null));
+        public List<TEntityInfo>? GetEntitiesByTags (TTagType tagSet) {
+            int? idxNullable = Utils.BinSearch (entitiesByTags, tagSet.ToInt32(null), static ((TTagType tag, List<TEntityInfo>) tagCollection) => tagCollection.tag.ToInt32(null));
             if (idxNullable.HasValue) {
                 int idx = idxNullable.Value;
                 return entitiesByTags[idx].lists;

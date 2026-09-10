@@ -14,7 +14,7 @@ namespace Engine {
         // adds an entity to the entity system
         public void AddEntity (Entity entity) {
             allEntities.Add (entity);
-            entity.Setup ();
+            entity.Setup (this);
             for (int i = 0; i < entityCollections.Length; i++) {
                 entityCollections[i].TryAddEntity (entity);
             }
@@ -24,7 +24,7 @@ namespace Engine {
         public void Update (float dt) {
             // updates all entities.
             for (int i = 0; i < allEntities.Count; i++) {
-                allEntities[i].Update (dt);
+                allEntities[i].Update (this, dt);
             }
 
             // cleans all lists of entities queued for removal
@@ -34,6 +34,10 @@ namespace Engine {
                     entityCollections[i].Clean ();
                 }
             }
+        }
+
+        public T? GetEntityCollection<T> (bool includeSubclasses = false) where T : EntityCollection {
+            return Utils.GetDerived<T, EntityCollection> (entityCollections, includeSubclasses);
         }
 
     }

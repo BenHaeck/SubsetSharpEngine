@@ -11,15 +11,17 @@ namespace SubsetSharpEngine {
     public class Player: Entity {
         public readonly BoxCollider collider = new BoxCollider (Vector2.Zero, new Vector2(32));
         public readonly RectangleRenderer renderer;
-
+        public List<EntityWithTagAndBoxCollider> walls;
         public Player () {
             renderer = new RectangleRenderer (collider, 0);
             components = new object[] { collider, renderer };
         }
 
-        protected override void OnSetup () {}
+        protected override void OnSetup (EntitySystem entitySystem) {
+            walls = entitySystem.GetEntityCollection<EntitiesByTagCollection<EntityWithTagAndBoxCollider, Tags>> ()!.GetEntitiesByTags(Tags.Wall)!;
+        }
 
-        public override void Update (float dt) {
+        public override void Update (EntitySystem entitySystem, float dt) {
             var dir = Vector2.Zero;
             if (Raylib.IsKeyDown (KeyboardKey.D)) {
                 dir.X += 1;
@@ -36,8 +38,17 @@ namespace SubsetSharpEngine {
             var dirNormalized = Vector2.Zero;
             if (dir != Vector2.Zero) dirNormalized = Vector2.Normalize (dir);
             collider.position += dirNormalized * dt * 200;
-            
-            base.Update (dt);
+
+            bool collided = false;
+            for (int axis = 0; axis < 2; axis++) {
+                for (int i = 0; i < walls.Count; i++) {
+                    if (Collision.CheckIntersection (walls[i].GetCollider (), collider)) {
+                        collided = true;
+                        collider.AlignEdge (walls[i].GetCollider (), axis);
+                    }
+                }
+            }
+            renderer.color = collided ? Color.Red : Color.White;
         }
     }
 }

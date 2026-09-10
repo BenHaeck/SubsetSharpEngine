@@ -24,8 +24,8 @@ namespace Engine {
     // a collection consisting of an entity, its renderer, and its collider
     public struct EntityRenderInfo : ISingleEntityInfo {
         public Renderer2D renderer;
-        public BoxCollider collider;
-        public Entity entity;
+        public PointCollider collider;
+        private Entity entity;
         public Entity GetEntity () {
             return entity;
         }
@@ -33,7 +33,7 @@ namespace Engine {
         
         public bool PopulateFrom (Entity entity) {
             this.entity = entity;
-            collider = entity.GetComponent<BoxCollider> (false)!;
+            collider = entity.GetComponent<PointCollider> (true)!;
             renderer = entity.GetComponent<Renderer2D> (true)!;
             return collider != null && renderer != null;
         }

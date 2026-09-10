@@ -15,15 +15,15 @@ namespace Engine
             this.components = components;
         }
 
-        public void Setup () {
-            OnSetup ();
+        public void Setup (EntitySystem es) {
+            OnSetup (es);
         }
 
         // called when added
-        protected virtual void OnSetup () {}
+        protected virtual void OnSetup (EntitySystem es) {}
 
         // called every frame
-        public virtual void Update (float dt) {}
+        public virtual void Update (EntitySystem es, float dt) {}
 
         // returns the component of a certain type
         public T? GetComponent<T> (bool allowSubclasses = false) where T: class {
@@ -41,7 +41,7 @@ namespace Engine
             return this;
         }
 
-        // removes every entity queued for removal;
+        // removes every entity queued for removal.
         public static bool CleanList<T> (List<T> entityContainerList) where T : ISingleEntityContainer {
             bool entityRemoved = false;
             for (int i = 0; i < entityContainerList.Count; i++) {

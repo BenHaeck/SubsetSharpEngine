@@ -11,8 +11,8 @@ public static class Program {
         return v.ToInt32 (null);
     }
     public static void Main () {
-        
-        var entities = new EntitiesByTagCollection<EntitiesWithTagManager<Tags>, Tags> (new Tags[]{
+        Run ();
+        /*var entities = new EntitiesByTagCollection<EntitiesWithTagManager<Tags>, Tags> (new Tags[]{
             Tags.Wall,
             Tags.Wall | Tags.TransparentWall,
             Tags.Enemy
@@ -34,7 +34,7 @@ public static class Program {
             Console.WriteLine ((Tags)entities.entitiesByTags[i].tag + " " + entities.entitiesByTags[i].lists.Count);
         }
         
-        Console.WriteLine (ToInt(Tags.Item | Tags.Wall));
+        Console.WriteLine (ToInt(Tags.Item | Tags.Wall));*/
         
     }
 
@@ -45,19 +45,34 @@ public static class Program {
         var renderers = new Renderer2DCollection ();
 
         entitySystem.entityCollections = new EntityCollection[]{
-            physicsEntities, renderers
+            physicsEntities, renderers, new EntitiesByTagCollection<EntityWithTagAndBoxCollider, Tags> (new Tags[] {
+                Tags.Wall
+            })
         };
 
         var player = new Player ();
         player.collider.position = new Vector2 (64, 64);
 
+        var wallPositions = new Vector2[] { new Vector2 (64, 64+32), new Vector2 (64, 128) };
+        for (int i = 0; i < wallPositions.Length; i++) {
+            var wallColl = new BoxCollider (wallPositions[i], new Vector2 (32));
+            var wall = new Entity (new object[] {
+                wallColl,
+                new RectangleRenderer(wallColl, 0),
+                new TagManager<Tags>(Tags.Wall),
+            });
+            entitySystem.AddEntity (wall);
+        }
+
         entitySystem.AddEntity (player);
 
+
         Raylib.InitWindow (600, 400, "Hello");
-        Raylib.SetWindowState (ConfigFlags.VSyncHint);
+        //Raylib.SetWindowState (ConfigFlags.VSyncHint);
         while (!Raylib.WindowShouldClose ()) {
             Raylib.BeginDrawing ();
             Raylib.ClearBackground (Color.DarkGray);
+            
             entitySystem.Update (Raylib.GetFrameTime ());
 
             renderers.DrawAll ();
