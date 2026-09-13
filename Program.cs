@@ -45,7 +45,7 @@ public static class Program {
         var renderers = new Renderer2DCollection ();
 
         entitySystem.entityCollections = new EntityCollection[]{
-            physicsEntities, renderers, new EntitiesByTagCollection<EntityWithTagAndBoxCollider, Tags> (new Tags[] {
+            physicsEntities, renderers, new EntitiesByTag<EntityWithTagAndBoxCollider, Tags> (new Tags[] {
                 Tags.Wall
             })
         };

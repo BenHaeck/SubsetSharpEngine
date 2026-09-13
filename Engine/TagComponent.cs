@@ -28,12 +28,12 @@ namespace Engine {
         }
     }
 
-    public class EntitiesByTagCollection <TEntityInfo, TTagType> : EntityCollection
+    public class EntitiesByTag <TEntityInfo, TTagType> : EntityCollection
     where TTagType : Enum, IConvertible
     where TEntityInfo : ISingleEntityInfo, ITagManagerContainer<TTagType>, new(){
         public (TTagType tag, List<TEntityInfo> lists)[] entitiesByTags;
 
-        public EntitiesByTagCollection (TTagType[] acceptedTagSets) {
+        public EntitiesByTag (TTagType[] acceptedTagSets) {
             acceptedTagSets = (TTagType[])acceptedTagSets.Clone ();
             
             Utils.Sort (acceptedTagSets, static (TTagType tag) => (double)(tag.ToInt32(null)));

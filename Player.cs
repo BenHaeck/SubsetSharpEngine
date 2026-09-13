@@ -18,7 +18,7 @@ namespace SubsetSharpEngine {
         }
 
         protected override void OnSetup (EntitySystem entitySystem) {
-            walls = entitySystem.GetEntityCollection<EntitiesByTagCollection<EntityWithTagAndBoxCollider, Tags>> ()!.GetEntitiesByTags(Tags.Wall)!;
+            walls = entitySystem.GetEntityCollection<EntitiesByTag<EntityWithTagAndBoxCollider, Tags>> ()!.GetEntitiesByTags(Tags.Wall)!;
         }
 
         public override void Update (EntitySystem entitySystem, float dt) {
