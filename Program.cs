@@ -68,7 +68,7 @@ public static class Program {
 
 
         Raylib.InitWindow (600, 400, "Hello");
-        //Raylib.SetWindowState (ConfigFlags.VSyncHint);
+        Raylib.SetWindowState (ConfigFlags.VSyncHint);
         while (!Raylib.WindowShouldClose ()) {
             Raylib.BeginDrawing ();
             Raylib.ClearBackground (Color.DarkGray);

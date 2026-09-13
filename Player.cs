@@ -37,10 +37,12 @@ namespace SubsetSharpEngine {
             }
             var dirNormalized = Vector2.Zero;
             if (dir != Vector2.Zero) dirNormalized = Vector2.Normalize (dir);
-            collider.position += dirNormalized * dt * 200;
+            //collider.position += dirNormalized * dt * 200;
 
             bool collided = false;
             for (int axis = 0; axis < 2; axis++) {
+                collider.position[axis] += dirNormalized[axis] * dt * 200;
+
                 for (int i = 0; i < walls.Count; i++) {
                     if (Collision.CheckIntersection (walls[i].GetCollider (), collider)) {
                         collided = true;
@@ -48,6 +50,11 @@ namespace SubsetSharpEngine {
                     }
                 }
             }
+            /*for (int i = 0; i < walls.Count; i++) {
+                if (collider.CollideAndCorrectAnyAxis (walls[i].GetCollider ())) {
+                    collided = true;
+                }
+            }*/
             renderer.color = collided ? Color.Red : Color.White;
         }
     }
