@@ -106,6 +106,7 @@ namespace Engine {
         public Texture2D texture;
         public (Vector2 position, Vector2 dimensions)? src = null;
         public Vector2 drawDimensions = Vector2.One;
+        public Vector2 offset = Vector2.Zero;
         public SpriteRenderer (int layer) : base (layer) {
             
         }

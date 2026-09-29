@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,6 +71,15 @@ namespace Engine {
 
             return null;
         }
-        
+
+         public static float FitInside (Vector2 inner, Vector2 outer) {
+            if (inner.X / outer.X < inner.Y / outer.Y) {
+                return outer.Y/inner.Y;
+            }
+            else {
+                return outer.X / inner.X;
+            }
+            //return 0;
+        }
     }
 }

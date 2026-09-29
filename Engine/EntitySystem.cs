@@ -36,6 +36,13 @@ namespace Engine {
             }
         }
 
+        public void Clear () {
+            allEntities.Clear ();
+            for (int i = 0; i < entityCollections.Length; i++) {
+                entityCollections[i].Clear ();
+            }
+        }
+
         public T? GetEntityCollection<T> (bool includeSubclasses = false) where T : EntityCollection {
             return Utils.GetDerived<T, EntityCollection> (entityCollections, includeSubclasses);
         }

@@ -9,10 +9,20 @@ namespace SubsetSharpEngine {
     public enum Tags {
         None = 0,
         Wall = 1,
-        TransparentWall = 2,
-        Enemy = 1<<2,
-        Item = 1<<3,
+        //TransparentWall = 2,
+        //Enemy = 1<<2,
+        Hitbox = 1<<3,
+        Character = 1<<4,
 
-        all = -1,
+        PlayerAligned = 1<<10,
+        EnemyAligned = 1<<11,
+        //Item = 1<<4,
+        All = -1,
+    }
+
+    public enum Layer {
+        Ground,
+        Characters,
+        Bullets,
     }
 }
