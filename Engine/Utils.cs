@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using System.Reflection.Metadata.Ecma335;
@@ -80,6 +81,63 @@ namespace Engine {
                 return outer.X / inner.X;
             }
             //return 0;
+        }
+    }
+
+    // represents a 1D group of regions alternating between active and inactive
+    //
+    public class Span {
+        public bool defaultActive = false;
+        //private int defaultActiveAdder => defaultActive? 
+        List<float> divisions = new List<float> ();
+        public int Count => divisions.Count + 1;
+
+        // gets the starting index for the current region
+        public int GetRegionIdx (float pos) {
+            int i = 0;
+            for ( ; i < divisions.Count; i++) {
+                if (pos < divisions[i]) break;
+            }
+            return i-1;
+        }
+
+        public bool IsActive (float pos) {
+            return IsRegionActive(GetRegionIdx (pos), defaultActive);
+        }
+
+        public void SetRegionActivity (float start, float end, bool active) {
+            int startIdx = GetRegionIdx (start)+1;
+            int endIdx = GetRegionIdx (end);
+
+            bool shouldClose = IsRegionActive (endIdx, defaultActive) != active;
+            for (int i = endIdx; i >= startIdx; i--) {
+                divisions.RemoveAt (i);
+            }
+
+            int insertIdx = startIdx;
+            if (IsActive (start) != active) {
+                
+                divisions.Insert (insertIdx, start);
+                insertIdx++;
+            }
+            if (shouldClose) {
+                divisions.Insert (insertIdx, end);
+            }
+        }
+        public static bool IsRegionActive (int idx, bool flipRegions) {
+            // |-1 + 0| % 2 == 1
+            return Math.Abs (idx + (flipRegions? 0 : 1)) % 2 == 1;
+        }
+
+        public override string ToString () {
+            string res = "Span:";
+            bool active = defaultActive;
+            for (int i = 0; i < divisions.Count; i++) {
+                res += $"{(active ? '#' : ' ')}{divisions[i]}";
+                active = !active;
+            }
+            return res + (active ? '#' : ' ');
+            
         }
     }
 }

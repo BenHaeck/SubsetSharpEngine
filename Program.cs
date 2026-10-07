@@ -35,8 +35,24 @@ public static class Program {
         return v.ToInt32 (null);
     }
     public static void Main () {
-        Run ();
-        
+        //Run ();
+
+        Span span = new Span ();
+        Console.WriteLine (span);
+        span.SetRegionActivity (10, 20, true);
+        span.SetRegionActivity (40, 50, true);
+        Console.WriteLine (span);
+        span.SetRegionActivity (15, 30, true);
+        span.SetRegionActivity (35, 45, true);
+        Console.WriteLine (span);
+        span.SetRegionActivity (37, 40, false);
+        span.SetRegionActivity (15, 25, false);
+        Console.WriteLine (span);
+
+
+
+
+
         /*var entities = new EntitiesByTagCollection<EntitiesWithTagManager<Tags>, Tags> (new Tags[]{
             Tags.Wall,
             Tags.Wall | Tags.TransparentWall,
@@ -60,7 +76,7 @@ public static class Program {
         }
         
         Console.WriteLine (ToInt(Tags.Item | Tags.Wall));*/
-        
+
     }
 
     public static void Run () {

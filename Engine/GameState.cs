@@ -1,5 +1,0 @@
-namespace Engine {
-    class GameState {
-
-    }
-}

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SubsetSharpEngine")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b64fad54707db0d8548aa6b3a2bf017e8fcd5e50")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9a981268af88c1b649a48d9a37138ab6c1f69ad")]
 [assembly: System.Reflection.AssemblyProductAttribute("SubsetSharpEngine")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SubsetSharpEngine")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

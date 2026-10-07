@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|c:\\users\\bnhae\\desktop\\collage stuff\\fall 2026\\independent study\\subsetsharpengine\\subsetsharpengine\\engine\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|solutionrelative:engine\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|c:\\users\\bnhae\\desktop\\collage stuff\\fall 2026\\independent study\\subsetsharpengine\\subsetsharpengine\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|c:\\users\\bnhae\\desktop\\collage stuff\\fall 2026\\independent study\\subsetsharpengine\\subsetsharpengine\\engine\\environment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|solutionrelative:engine\\environment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|c:\\users\\bnhae\\desktop\\collage stuff\\fall 2026\\independent study\\subsetsharpengine\\subsetsharpengine\\engine\\entitysystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|solutionrelative:engine\\entitysystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|c:\\users\\bnhae\\desktop\\collage stuff\\fall 2026\\independent study\\subsetsharpengine\\subsetsharpengine\\engine\\gamemodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|solutionrelative:engine\\gamemodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|c:\\users\\bnhae\\desktop\\collage stuff\\fall 2026\\independent study\\subsetsharpengine\\subsetsharpengine\\engine\\levelmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -51,16 +63,8 @@
       "RelativeMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|solutionrelative:tags.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|c:\\users\\bnhae\\desktop\\collage stuff\\fall 2026\\independent study\\subsetsharpengine\\subsetsharpengine\\engine\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|solutionrelative:engine\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|c:\\users\\bnhae\\desktop\\collage stuff\\fall 2026\\independent study\\subsetsharpengine\\subsetsharpengine\\engine\\tagcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|solutionrelative:engine\\tagcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|c:\\users\\bnhae\\desktop\\collage stuff\\fall 2026\\independent study\\subsetsharpengine\\subsetsharpengine\\engine\\gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB65363D-A77D-4478-84D1-00642E9BD22E}|SubsetSharpEngine.csproj|solutionrelative:engine\\gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,57 +78,20 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LevelEditor.cs",
-              "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\LevelEditor.cs",
-              "RelativeDocumentMoniker": "Engine\\LevelEditor.cs",
-              "ToolTip": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\LevelEditor.cs",
-              "RelativeToolTip": "Engine\\LevelEditor.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAEAAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-21T16:26:03.212Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "LevelManagement.cs",
-              "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\LevelManagement.cs",
-              "RelativeDocumentMoniker": "Engine\\LevelManagement.cs",
-              "ToolTip": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\LevelManagement.cs",
-              "RelativeToolTip": "Engine\\LevelManagement.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAeAAAAAAAAAA==",
+              "Title": "Environment.cs",
+              "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\Environment.cs",
+              "RelativeDocumentMoniker": "Engine\\Environment.cs",
+              "ToolTip": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\Environment.cs",
+              "RelativeToolTip": "Engine\\Environment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-17T17:55:47.458Z",
+              "WhenOpened": "2026-10-05T21:58:49.435Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Player.cs",
-              "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Player.cs",
-              "RelativeDocumentMoniker": "Player.cs",
-              "ToolTip": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Player.cs",
-              "RelativeToolTip": "Player.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-28T22:30:26.422Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "RenderComponent.cs",
-              "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\RenderComponent.cs",
-              "RelativeDocumentMoniker": "Engine\\RenderComponent.cs",
-              "ToolTip": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\RenderComponent.cs",
-              "RelativeToolTip": "Engine\\RenderComponent.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAAAGwAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-28T22:27:38.896Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "Entity.cs",
               "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\Entity.cs",
               "RelativeDocumentMoniker": "Engine\\Entity.cs",
@@ -136,7 +103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "Tags.cs",
               "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Tags.cs",
               "RelativeDocumentMoniker": "Tags.cs",
@@ -148,33 +115,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAAAGYAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-02T05:26:10.601Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "EntitySystem.cs",
               "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\EntitySystem.cs",
               "RelativeDocumentMoniker": "Engine\\EntitySystem.cs",
               "ToolTip": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\EntitySystem.cs",
               "RelativeToolTip": "Engine\\EntitySystem.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACkAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACkAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-31T02:42:18.868Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Physics.cs",
               "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\Physics.cs",
               "RelativeDocumentMoniker": "Engine\\Physics.cs",
@@ -186,7 +140,93 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 4,
+              "Title": "GameModule.cs",
+              "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\GameModule.cs",
+              "RelativeDocumentMoniker": "Engine\\GameModule.cs",
+              "ToolTip": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\GameModule.cs",
+              "RelativeToolTip": "Engine\\GameModule.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-28T22:29:35.738Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Utils.cs",
+              "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\Utils.cs",
+              "RelativeDocumentMoniker": "Engine\\Utils.cs",
+              "ToolTip": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\Utils.cs",
+              "RelativeToolTip": "Engine\\Utils.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAMwHAAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-28T22:28:15.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Player.cs",
+              "RelativeDocumentMoniker": "Player.cs",
+              "ToolTip": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Player.cs",
+              "RelativeToolTip": "Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-28T22:30:26.422Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACoAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-02T05:26:10.601Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RenderComponent.cs",
+              "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\RenderComponent.cs",
+              "RelativeDocumentMoniker": "Engine\\RenderComponent.cs",
+              "ToolTip": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\RenderComponent.cs",
+              "RelativeToolTip": "Engine\\RenderComponent.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAGwAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-28T22:27:38.896Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LevelManagement.cs",
+              "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\LevelManagement.cs",
+              "RelativeDocumentMoniker": "Engine\\LevelManagement.cs",
+              "ToolTip": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\LevelManagement.cs",
+              "RelativeToolTip": "Engine\\LevelManagement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-17T17:55:47.458Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LevelEditor.cs",
+              "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\LevelEditor.cs",
+              "RelativeDocumentMoniker": "Engine\\LevelEditor.cs",
+              "ToolTip": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\LevelEditor.cs",
+              "RelativeToolTip": "Engine\\LevelEditor.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEAAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T16:26:03.212Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Enemies.cs",
               "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Enemies.cs",
               "RelativeDocumentMoniker": "Enemies.cs",
@@ -198,7 +238,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "Bullet.cs",
               "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Bullet.cs",
               "RelativeDocumentMoniker": "Bullet.cs",
@@ -210,7 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "CustomEntCollectionStructs.cs",
               "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\CustomEntCollectionStructs.cs",
               "RelativeDocumentMoniker": "CustomEntCollectionStructs.cs",
@@ -222,19 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Utils.cs",
-              "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\Utils.cs",
-              "RelativeDocumentMoniker": "Engine\\Utils.cs",
-              "ToolTip": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\Utils.cs",
-              "RelativeToolTip": "Engine\\Utils.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAwwEsAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-28T22:28:15.515Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "TagComponent.cs",
               "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\TagComponent.cs",
               "RelativeDocumentMoniker": "Engine\\TagComponent.cs",
@@ -243,18 +271,6 @@
               "ViewState": "AgIAAA8AAAAAAAAAAAAAAC8AAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-31T15:10:48.973Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "GameState.cs",
-              "DocumentMoniker": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\GameState.cs",
-              "RelativeDocumentMoniker": "Engine\\GameState.cs",
-              "ToolTip": "C:\\Users\\bnhae\\Desktop\\Collage Stuff\\Fall 2026\\Independent study\\SubsetSharpEngine\\SubsetSharpEngine\\Engine\\GameState.cs",
-              "RelativeToolTip": "Engine\\GameState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-28T22:29:35.738Z"
             }
           ]
         }
