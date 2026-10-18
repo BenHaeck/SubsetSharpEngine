@@ -6,13 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Raylib_cs;
 namespace Engine {
-    public abstract class LevelEditor {
-        public LevelBP bp = new LevelBP();
+    public abstract class LevelEditor : GameState {
+        //public LevelBP bp = new LevelBP();
 
         public Vector2 tileSize = new Vector2 (1);
 
 
-        public Vector2 mousePos = Vector2.Zero;
+        //public Vector2 mousePos = Vector2.Zero;
         public Vector2 curserPos;
         public char[] validTiles = new char[0];
         public int currentTile;
@@ -23,7 +23,7 @@ namespace Engine {
 
         public void SetSelectedTile (int t) {
             currentTile = t;
-            currentTileData = bp.GetTilesByType (validTiles[t]);
+            currentTileData = info.bp.GetTilesByType (validTiles[t]);
         }
 
         public void AddTile (Vector2 position, bool replaceCurrent = true) {
@@ -33,7 +33,7 @@ namespace Engine {
         }
 
         public void RemoveTileAt (Vector2 position) {
-            foreach (KeyValuePair<char, List<Vector2>> tileDataByType in bp.layout) {
+            foreach (KeyValuePair<char, List<Vector2>> tileDataByType in info.bp.layout) {
                 var tileData = tileDataByType.Value;
                 for (int i = 0; i < tileDataByType.Value.Count; i++) {
                     if (Collision.CheckIntersectionBox (tileData[i], position, tileSize * 0.3f)) {
@@ -44,9 +44,9 @@ namespace Engine {
         }
         
 
-        public void Update (float dt) {
+        public override void Update (GameStateManager manager, float dt) {
             if (Raylib.IsKeyDown (selectButton)) {
-                curserPos = mousePos;
+                curserPos = info.display.InnerMousePos;
                 for (int i = 0; i < validTiles.Length; i++) {
                     if (Collision.CheckIntersectionBox (GetTileSelectPos (i), curserPos, new Vector2 (48) / 2)) {
                         SetSelectedTile (i);
@@ -54,7 +54,7 @@ namespace Engine {
                 }
             }
             else {
-                curserPos = mousePos / tileSize;
+                curserPos = info.display.InnerMousePos / tileSize;
                 curserPos = new Vector2 (MathF.Round (curserPos.X), MathF.Round (curserPos.Y));
                 curserPos *= tileSize;
 
@@ -72,7 +72,7 @@ namespace Engine {
             
         }
 
-        public void DrawGameWorld () {
+        public override void Draw (GameStateManager manager) {
             if (Raylib.IsKeyDown (selectButton)) {
                 for (int i = 0; i < validTiles.Length; i++) {
                     var pos = GetTileSelectPos (i);
@@ -81,7 +81,7 @@ namespace Engine {
             }
             else {
                 for (int i = 0; i < validTiles.Length; i++) {
-                    List<Vector2>? tilePositions = bp.GetTilePositionsByType (validTiles[i]);
+                    List<Vector2>? tilePositions = info.bp.GetTilePositionsByType (validTiles[i]);
                     if (tilePositions == null) continue;
 
                     for (int j = 0; j < tilePositions.Count; j++) {

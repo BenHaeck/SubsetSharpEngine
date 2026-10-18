@@ -26,8 +26,8 @@ namespace Engine
         public virtual void Update (EntitySystem es, float dt) {}
 
         // returns the component of a certain type
-        public T? GetComponent<T> (bool allowSubclasses = false) where T: class {
-            return Utils.GetDerived<T, object> (components, allowSubclasses);
+        public T? GetComponent<T> (bool includeSubclasses = false) where T: class {
+            return Utils.GetDerived<T, object> (components, includeSubclasses);
         }
 
         // queues the removal of this entity from every list/datas tructure

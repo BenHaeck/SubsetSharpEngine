@@ -14,7 +14,9 @@ namespace SubsetSharpEngine {
         public readonly RectangleRenderer renderer;
         public List<EntityWithTagAndBox> walls;
 
-        public Vector2 mousePos = Vector2.One;
+
+        public WindowManager windowManager;
+        //public static Vector2 mousePos = Vector2.One;
 
         private float fireRecov = 0;
 
@@ -59,7 +61,7 @@ namespace SubsetSharpEngine {
                 fireRecov = FIRE_INTERVOL;
                 var bullet = new Bullet ();
                 bullet.collider.position = collider.position;
-                bullet.velocity = Vector2.Normalize(mousePos - collider.position) * BULLET_SPEED;
+                bullet.velocity = Vector2.Normalize(windowManager.InnerMousePos - collider.position) * BULLET_SPEED;
                 bullet.tagMask = Tags.EnemyAligned | Tags.Character;
                 bullet.damage = 10;
                 entitySystem.AddEntity (bullet);

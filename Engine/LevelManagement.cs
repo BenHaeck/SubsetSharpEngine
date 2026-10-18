@@ -2,7 +2,7 @@ using System;
 using System.Numerics;
 
 namespace Engine {
-    public class TileBP {
+    public struct TileBP {
         
     }
 
