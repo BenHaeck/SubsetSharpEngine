@@ -48,29 +48,32 @@ public static class Program {
         span.SetRegionActivity (37, 40, false);
         span.SetRegionActivity (15, 25, false);
         Console.WriteLine (span);
+        span.SetRegionActivity (5, 12, false);
+        Console.WriteLine (span);
 
+        //return;
         var span2 = (RegionSet1D)span.Clone ();
         Console.WriteLine (span);
 
-        Raylib.InitWindow (600, 400, "?");
         AAMesh ev = new AAMesh ();
         ev.AppendRectangle (new Vector2 (32), new Vector2 (64*1.5f), true);
 
         ev.AppendRectangle (new Vector2 (32, 32+32*3), new Vector2 (64, 64+32*3.5f), true);
         ev.AppendRectangle (new Vector2 (128, 32+32*1.5f), new Vector2 (128+32, 64+32*2f), true);
-
+        
         ev.AppendRectangle (new Vector2 (64, 32), new Vector2 (128, 48), true);
         //ev.AppendRectangle (new Vector2 (64, 32+32*2), new Vector2 (64+16, 64+32*2.5f), true);
         ev.AppendRectangle (new Vector2 (32, 128+64), new Vector2 (128+32, 128+128), true);
         ev.AppendRectangle (new Vector2 (48, 8), new Vector2 (128+32, 16), true);
         ev.AppendRectangle (new Vector2 (128+32-24, -2), new Vector2 (128+32-8, 4), false);
-
+        
         ev.CullRedundentRegions ();
 
 
         ev.AppendRectangle (new Vector2 (32+8, 32+8), new Vector2 (32 + 8*2, 256-25), false);
         ev.AppendRectangle (new Vector2 (320, 5), new Vector2 (320+32, 8), true);
 
+        Raylib.InitWindow (600, 400, "?");
         Texture2D tex = Raylib.LoadTexture ("assets/Brick.png");
         Raylib.SetTextureFilter (tex, TextureFilter.Point);
         Raylib.SetTextureWrap (tex, TextureWrap.Repeat);
@@ -106,7 +109,7 @@ public static class Program {
                     Console.WriteLine ($"\tRegion: {region} {ev.RegionCount} starts at {subRegionObject.GetRegionIdx (coll.position.Y - coll.size.Y*2f)}, {ev.SubRegionCount (region)} {subRegionObject.Count}");
                     //Console.WriteLine ($"{coll.position.X + coll.size.X*1.2f} {lower}");
                     if (coll.position.X + coll.size.X*1.1f <= lower) break;
-                    for (int subRegion = subRegionObject.GetRegionIdx(coll.position.Y - coll.size.Y*1.1f); subRegion < ev.SubRegionCount (region) - 1; subRegion++) {
+                    for (int subRegion = subRegionObject.GetRegionIdx(coll.position.Y - coll.size.Y*1.1f); subRegion < ev.SubRegionCount (region); subRegion++) {
                         Console.WriteLine ($"\t\tSubRegion: {subRegion} {subRegionObject.Count}");
 
                         if (!subRegionObject.IsRegionActive (subRegion)) continue;
@@ -125,11 +128,11 @@ public static class Program {
 
 
 
-        
+
 
     }
 
-    
+
 
     public static void Run () {
 

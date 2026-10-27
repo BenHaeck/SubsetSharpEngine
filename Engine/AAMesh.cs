@@ -196,23 +196,19 @@ namespace Engine {
 
         // gets the starting index for the current region
         public int GetRegionIdx (float pos) {
-            /*int i = 0;
-            for ( ; i < divisions.Count; i++) {
-                if (pos < divisions[i]) break;
-            }
-            return i-1;*/
+            
             if (divisions.Count == 0) {
-                return -1;
+                return 0;
             }
             if (pos < divisions[0]) {
-                return -1;
+                return 0;
             }
 
             if (pos >= divisions[divisions.Count - 1]) {
-                return divisions.Count - 1;
+                return divisions.Count;
             }
 
-            int start = 0, end = divisions.Count - 2;
+            int start = 1, end = divisions.Count - 1;
             int loopBudget = Count * 2;
             while (start <= end) {
                 if (loopBudget <= 0) break;
@@ -220,8 +216,8 @@ namespace Engine {
 
                 int middle = (start + end) / 2;
                 //(float startPos, float endPos) = GetRegionBounds (middle);
-                float startPos = divisions[middle];
-                float endPos = divisions[middle + 1];
+                float startPos = divisions[middle - 1];
+                float endPos = divisions[middle];
                 //Console.WriteLine ($"Key {pos}, {start} {middle} {end}, {startPos} {endPos}");
                 if (startPos <= pos && pos < endPos) {
                     return middle;
@@ -230,7 +226,7 @@ namespace Engine {
                 else if (end < pos) start = middle + 1;
             }
             Console.WriteLine ("Error Could not find region at " + pos);
-            return -2;
+            return -1;
         }
 
         float GetDivisionPosition (int idx) {
@@ -245,7 +241,7 @@ namespace Engine {
         }
 
         public (float, float) GetRegionBounds (int idx) {
-            return (GetDivisionPosition (idx), GetDivisionPosition (idx + 1));
+            return (GetDivisionPosition (idx - 1), GetDivisionPosition (idx));
         }
 
         public bool IsActive (float pos) {
@@ -253,11 +249,11 @@ namespace Engine {
         }
 
         public void SetRegionActivity (float start, float end, bool active) {
-            int startIdx = GetRegionIdx (start)+1;
+            int startIdx = GetRegionIdx (start);
             int endIdx = GetRegionIdx (end);
             //Console.WriteLine ($"{startIdx} {endIdx}");
             bool shouldClose = IsRegionActive (endIdx, defaultActive) != active;
-            for (int i = endIdx; i >= startIdx; i--) {
+            for (int i = endIdx-1; i >= startIdx; i--) {
                 divisions.RemoveAt (i);
             }
 
@@ -278,7 +274,7 @@ namespace Engine {
 
         public static bool IsRegionActive (int idx, bool flipRegions) {
             // |-1 + 0| % 2 == 1
-            return Math.Abs (idx + (flipRegions ? 0 : 1)) % 2 == 1;
+            return Math.Abs (idx + (flipRegions ? 1 : 0)) % 2 == 1;
         }
 
         public override string ToString () {
