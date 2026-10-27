@@ -63,8 +63,13 @@ public static class Program {
         //ev.AppendRectangle (new Vector2 (64, 32+32*2), new Vector2 (64+16, 64+32*2.5f), true);
         ev.AppendRectangle (new Vector2 (32, 128+64), new Vector2 (128+32, 128+128), true);
         ev.AppendRectangle (new Vector2 (48, 8), new Vector2 (128+32, 16), true);
+        ev.AppendRectangle (new Vector2 (128+32-24, -2), new Vector2 (128+32-8, 4), false);
+
+        ev.CullRedundentRegions ();
+
 
         ev.AppendRectangle (new Vector2 (32+8, 32+8), new Vector2 (32 + 8*2, 256-25), false);
+        ev.AppendRectangle (new Vector2 (320, 5), new Vector2 (320+32, 8), true);
 
         Texture2D tex = Raylib.LoadTexture ("assets/Brick.png");
         Raylib.SetTextureFilter (tex, TextureFilter.Point);
@@ -76,8 +81,8 @@ public static class Program {
         while (!Raylib.WindowShouldClose ()) {
             Raylib.BeginDrawing ();
             Raylib.ClearBackground (Color.DarkGray);
-            ev.DrawTextured (tex, 0.5f, Color.SkyBlue);
-
+            //ev.DrawTextured (tex, 0.5f, Color.SkyBlue);
+            ev.DrawColoredDebug ();
             float dt = Raylib.GetFrameTime ();
             var dir = Vector2.Zero;
             if (Raylib.IsKeyDown (KeyboardKey.D)) {
@@ -95,18 +100,18 @@ public static class Program {
             for (int axis = 0; axis < 2; axis++) {
                 coll.position[axis] += dir[axis] * dt * 60;
                 Console.WriteLine ("Loop");
-                for (int region = ev.GetRegionIdx(coll.position.X - coll.size.X*2); region < ev.RegionCount - 2; region++) {
+                for (int region = ev.GetRegionIdx(coll.position.X - coll.size.X*1.1f); region < ev.RegionCount - 1; region++) {
                     //Console.WriteLine ($"{region} {ev.RegionCount}");
-                    Console.WriteLine ("\tRegion: " + region);
                     (float lower, float upperBound, RegionSet1D subRegionObject) = ev.GetRegionByIdx (region);
+                    Console.WriteLine ($"\tRegion: {region} {ev.RegionCount} starts at {subRegionObject.GetRegionIdx (coll.position.Y - coll.size.Y*2f)}, {ev.SubRegionCount (region)} {subRegionObject.Count}");
                     //Console.WriteLine ($"{coll.position.X + coll.size.X*1.2f} {lower}");
-                    if (coll.position.X + coll.size.X*1.2f <= lower) break;
-                    for (int subRegion = subRegionObject.GetRegionIdx(coll.position.Y - coll.size.Y*2); subRegion < ev.SubRegionCount (region) - 1; subRegion++) {
-                        Console.WriteLine ("\t\tSubRegion: " + subRegion);
+                    if (coll.position.X + coll.size.X*1.1f <= lower) break;
+                    for (int subRegion = subRegionObject.GetRegionIdx(coll.position.Y - coll.size.Y*1.1f); subRegion < ev.SubRegionCount (region) - 1; subRegion++) {
+                        Console.WriteLine ($"\t\tSubRegion: {subRegion} {subRegionObject.Count}");
 
                         if (!subRegionObject.IsRegionActive (subRegion)) continue;
                         ev.SubRegionBox (wallCollider, region, subRegion);
-                        if (coll.position.Y + coll.size.Y*1.2f < wallCollider.position.Y - wallCollider.size.Y) break;
+                        if (coll.position.Y + coll.size.Y*1.1f < wallCollider.position.Y - wallCollider.size.Y) break;
                         if (Collision.CheckIntersection (coll, wallCollider)) {
                             coll.AlignEdge (wallCollider, axis);
                         }
@@ -274,8 +279,8 @@ public static class Program {
     }
 
 
-    public static void CreateGameWorld (LevelBP bp, EntitySystem es) {
-        List<Vector2> tilePositions = bp.GetTilesByType ('#');
+    /*public static void CreateGameWorld (LevelBP bp, EntitySystem es) {
+        List<Vector2> tilePositions = bp.GetOrCreateTileType ('#');
         for (int i = 0; i < tilePositions.Count; i++) {
             var wallColl = new BoxCollider (tilePositions[i], new Vector2 (32));
             var wall = new Entity (new object[] {
@@ -286,15 +291,15 @@ public static class Program {
             es.AddEntity (wall);
         }
         Player player = new Player ();
-        player.collider.position = bp.GetTilesByType ('P')[0];
+        player.collider.position = bp.GetOrCreateTileType ('P')[0];
         es.AddEntity (player);
-        tilePositions = bp.GetTilesByType ('B');
+        tilePositions = bp.GetOrCreateTileType ('B');
         for (int i = 0; i < tilePositions.Count; i++) {
             Enemy enemy = new Enemy ();
             enemy.collider.position = tilePositions[i];
             es.AddEntity (enemy);
         }
         
-    }
+    }*/
 }
 

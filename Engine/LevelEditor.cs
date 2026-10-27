@@ -6,24 +6,22 @@ using System.Text;
 using System.Threading.Tasks;
 using Raylib_cs;
 namespace Engine {
+    
     public abstract class LevelEditor : GameState {
-        //public LevelBP bp = new LevelBP();
 
         public Vector2 tileSize = new Vector2 (1);
 
-
-        //public Vector2 mousePos = Vector2.Zero;
+        // needs a tool system
         public Vector2 curserPos;
         public char[] validTiles = new char[0];
         public int currentTile;
         public List<Vector2> currentTileData = new List<Vector2>();
 
-        // controls
         KeyboardKey selectButton = KeyboardKey.Space;
 
         public void SetSelectedTile (int t) {
             currentTile = t;
-            currentTileData = info.bp.GetTilesByType (validTiles[t]);
+            currentTileData = info.bp.GetOrCreateTileType (validTiles[t]);
         }
 
         public void AddTile (Vector2 position, bool replaceCurrent = true) {

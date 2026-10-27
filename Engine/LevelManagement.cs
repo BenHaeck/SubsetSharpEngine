@@ -3,17 +3,17 @@ using System.Numerics;
 
 namespace Engine {
     public struct TileBP {
-        
+        public Vector2 position;
+        public string metaData;
     }
 
     public class LevelBP {
         public Dictionary<char, List<Vector2>> layout = new Dictionary<char, List<Vector2>>();
+        //public Dictionary<char, List<Vector2>> layout = new Dictionary<char, List<Vector2>> ();
 
-        public List<Vector2>? GetTilePositionsByType (char tileType) {
-            List<Vector2>? tilePositions = null;
-            layout.TryGetValue (tileType, out tilePositions);
-            return tilePositions;
-        }
+        public object[] metaData;
+
+
 
         /*public void CreateEmptyWithTiles (char[] tiles) {
             for (int i = 0; i < tiles.Length; i++) {
@@ -21,8 +21,13 @@ namespace Engine {
                     layout.Add (tiles[i], new List<Vector2> ());
             }
         }*/
+        public List<Vector2>? GetTilePositionsByType (char tileType) {
+            List<Vector2>? tilePositions = null;
+            layout.TryGetValue (tileType, out tilePositions);
+            return tilePositions;
+        }
 
-        public List<Vector2> GetTilesByType (char t) {
+        public List<Vector2> GetOrCreateTileType (char t) {
             if (layout.ContainsKey (t)) {
                 return layout[t];
             }

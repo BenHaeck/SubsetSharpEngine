@@ -1,6 +1,7 @@
 ﻿using Raylib_cs;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -13,12 +14,14 @@ namespace Engine {
         List<float> divisions = new List<float>();
         List<RegionSet1D> regions = new List<RegionSet1D> () {new RegionSet1D()};
 
+        public static Color[] debugColors = {Color.Red, Color.Magenta, Color.Blue, Color.Yellow, Color.Green, new Color(255, 255, 0), Color.White};
+
         public int RegionCount => regions.Count;
 
         public float minimumRegionSize = 0.01f;
 
         public int SubRegionCount (int regionIdx) {
-            return regions[regionIdx + 1].Count;
+            return regions[regionIdx].Count;
         }
 
         public int GetRegionIdx (float pos) {
@@ -90,9 +93,32 @@ namespace Engine {
             }
         }
 
+        public void CullRedundentRegions () {
+            for (int i = divisions.Count - 2; i >= 0; i--) {
+                // if the regions have different lengths than they are different, so move on to the next loop
+                if (regions[i].divisions.Count != regions[i+1].divisions.Count) continue;
+
+                bool regionsMatch = true;
+                for (int j = 0; j < regions[i].divisions.Count; j++) {
+                    //Console.WriteLine ($"inner Idx {j}, {regions[i].divisions.Count} {regions[i+1].divisions.Count}");
+                    float d1 = regions[i].divisions[j], d2 = regions[i+1].divisions[j];
+                    // compares subdivisions in each region to see if the two regions are the same
+                    if (d1 + minimumRegionSize < d2 || d1 - minimumRegionSize > d2) {
+                        regionsMatch = false;
+                        break;
+                    }
+                }
+
+                // if they are the same than cull one and delete the division to merge them
+                if (regionsMatch) {
+                    divisions.RemoveAt (i);
+                    regions.RemoveAt (i+1);
+                }
+            }
+        }
 
         public (float start, float end, RegionSet1D region) GetRegionByIdx (int i) {
-            if (i <= -1) {
+            if (i <= 0) {
                 return (float.NegativeInfinity, divisions[0], regions[0]);
             }
 
@@ -100,7 +126,7 @@ namespace Engine {
                 return (divisions[divisions.Count - 1], float.PositiveInfinity, regions[regions.Count - 1]);
             }
 
-            return (divisions[i], divisions[i+1], regions[i+1]);
+            return (divisions[i-1], divisions[i], regions[i]);
         }
 
         public bool SubRegionBox (BoxCollider outputBox, int regionIdx, int subregionIdx) {
@@ -126,8 +152,24 @@ namespace Engine {
             }
         }
 
+        public void DrawColoredDebug () {
+            for (int i = 1; i < regions.Count-1; i++) {
+                float left = divisions[i-1];
+                float right = divisions[i];
+                for (int j = 0; j < regions[i].Count - 2; j+=2) {
+                    float upper = regions[i].divisions[j];
+                    float lower = regions[i].divisions[j+1];
+                    Vector2 position = new Vector2 (left, upper);
+                    Vector2 size = new Vector2 (right - left, lower - upper);
+                    Color color = debugColors[(j + i - 1) % debugColors.Length];
+                    
+                    Raylib.DrawRectangleV (position, size, color);
+
+                }
+            }
+        }
+
         public void DrawColored (Color color) {
-            
             for (int i = 1; i < regions.Count-1; i++) {
                 float left = divisions[i-1];
                 float right = divisions[i];
@@ -257,6 +299,32 @@ namespace Engine {
                 clone.divisions.Add (divisions[i]);
             }
             return clone;
+        }
+    }
+
+    public struct AAMeshIterator {
+        public readonly float bottom, top, left, right;
+        int regionIdx = 0;
+        int subregionIdx;
+        AAMesh aamesh;
+        public AAMeshIterator (AAMesh aamesh, float left, float right, float bottom, float top) {
+            this.left = left;
+            this.right = right;
+            this.bottom = bottom;
+            this.top = top;
+            this.aamesh = aamesh;
+            regionIdx = aamesh.GetRegionIdx (left);
+            subregionIdx = aamesh.GetRegionByIdx (regionIdx).region.GetRegionIdx(top);
+        }
+
+        public AAMeshIterator (AAMesh aamesh, BoxCollider collider) {
+            left = collider.position.X - collider.size.X / 2;
+            bottom = collider.position.Y - collider.size.Y / 2;
+            right = collider.position.X + collider.size.X / 2;
+            top = collider.position.Y + collider.size.Y / 2;
+            this.aamesh = aamesh;
+            regionIdx = aamesh.GetRegionIdx (left);
+            subregionIdx = aamesh.GetRegionByIdx (regionIdx).region.GetRegionIdx (top);
         }
     }
 

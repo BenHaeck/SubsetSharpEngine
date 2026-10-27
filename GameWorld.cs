@@ -29,7 +29,7 @@ namespace SubsetSharpEngine {
 
         public override void LoadLevel (LevelBP bp) {
             entitySystem.Clear ();
-            List<Vector2> tilePositions = bp.GetTilesByType ('#');
+            List<Vector2> tilePositions = bp.GetOrCreateTileType ('#');
             for (int i = 0; i < tilePositions.Count; i++) {
                 var wallColl = new BoxCollider (tilePositions[i], new Vector2 (32));
                 var wall = new Entity (new object[] {
@@ -42,11 +42,11 @@ namespace SubsetSharpEngine {
 
             player = new Player ();
             player.windowManager = info.display;
-            player.collider.position = bp.GetTilesByType ('P')[0];
+            player.collider.position = bp.GetOrCreateTileType ('P')[0];
             entitySystem.AddEntity (player);
 
 
-            tilePositions = bp.GetTilesByType ('B');
+            tilePositions = bp.GetOrCreateTileType ('B');
             for (int i = 0; i < tilePositions.Count; i++) {
                 Enemy enemy = new Enemy ();
                 enemy.collider.position = tilePositions[i];
