@@ -4,11 +4,50 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Engine {
-    public class AAMesh : Entity {
+
+    // integrating it into the engine.
+    // 
+    public class AAMeshEntity: Entity {
+        //Texture2D? texture;
+        public readonly AAMesh aamesh;
+        public AAMeshRenderer renderer;
+        public BoxCollider collider;
+
+        public AAMeshEntity (AAMeshRenderer renderer, AAMesh aamesh) {
+            renderer.aamesh = aamesh;
+            this.aamesh = aamesh;
+        }
+    }
+
+    public class AAMeshRenderer: Renderer2D {
+        public Texture2D? texture;
+        public AAMesh aamesh;
+        public float textureSizeMult = 1;
+        public Color color = Color.White;
+
+        public AAMeshRenderer (AAMesh aamesh, int layer) : base (layer) { this.aamesh = aamesh; }
+        public AAMeshRenderer (AAMesh aamesh, Texture2D? texture, int layer) : base (layer) {
+            this.aamesh = aamesh;
+            this.texture = texture;
+        }
+
+        public override void Draw (Vector2 position) {
+            if (texture.HasValue) {
+                aamesh.DrawTextured (texture.Value, textureSizeMult, color);
+            }
+            else {
+                aamesh.DrawColored (color);
+            }
+        }
+
+    }
+
+    public class AAMesh {
         // region start division idx = region idx - 1
         // region end division idx = region idx
         List<float> divisions = new List<float>();
@@ -137,7 +176,7 @@ namespace Engine {
             return RegionSet1D.IsRegionActive (subregionIdx, region.defaultActive);
         }
 
-        public void DrawTextured (Texture2D texture, float v, Color color) {
+        public void DrawTextured (Texture2D texture, float size_mult, Color color) {
             for (int i = 1; i < regions.Count-1; i++) {
                 float left = divisions[i-1];
                 float right = divisions[i];
@@ -147,7 +186,7 @@ namespace Engine {
                     Vector2 position = new Vector2 (left, upper);
                     Vector2 size = new Vector2 (right - left, lower - upper);
                     //Raylib.DrawRectangleV (position, size, color);
-                    Raylib.DrawTexturePro (texture, new Rectangle (position * v, size * v), new Rectangle (position, size), Vector2.Zero, 0, color);
+                    Raylib.DrawTexturePro (texture, new Rectangle (position * size_mult, size * size_mult), new Rectangle (position, size), Vector2.Zero, 0, color);
                 }
             }
         }
@@ -298,6 +337,11 @@ namespace Engine {
         }
     }
 
+    public struct Region2DInfo {
+        float bottom, top, left, right;
+        
+        bool active;
+    }
     public struct AAMeshIterator {
         public readonly float bottom, top, left, right;
         int regionIdx = 0;
@@ -310,18 +354,76 @@ namespace Engine {
             this.top = top;
             this.aamesh = aamesh;
             regionIdx = aamesh.GetRegionIdx (left);
-            subregionIdx = aamesh.GetRegionByIdx (regionIdx).region.GetRegionIdx(top);
+            subregionIdx = aamesh.GetRegionByIdx (regionIdx).region.GetRegionIdx (top);
         }
 
-        public AAMeshIterator (AAMesh aamesh, BoxCollider collider) {
-            left = collider.position.X - collider.size.X / 2;
-            bottom = collider.position.Y - collider.size.Y / 2;
-            right = collider.position.X + collider.size.X / 2;
-            top = collider.position.Y + collider.size.Y / 2;
+        public AAMeshIterator (AAMesh aamesh, BoxCollider collider, float sizeMult = 1) {
+            left = collider.position.X - collider.size.X * sizeMult / 2;
+            bottom = collider.position.Y + collider.size.Y * sizeMult / 2;
+            right = collider.position.X + collider.size.X * sizeMult / 2;
+            top = collider.position.Y - collider.size.Y * sizeMult / 2;
             this.aamesh = aamesh;
             regionIdx = aamesh.GetRegionIdx (left);
             subregionIdx = aamesh.GetRegionByIdx (regionIdx).region.GetRegionIdx (top);
         }
+
+        public bool IsFinished () {
+            if (regionIdx >= aamesh.RegionCount) return true;
+            return aamesh.GetRegionByIdx (regionIdx).start > right;
+        }
+
+        public (float left, float right, float bottom, float top) GetCurrentSubRegionBounds () {
+            float left, right;
+            RegionSet1D region;
+            (left, right, region) = aamesh.GetRegionByIdx (regionIdx);
+            float top, bottom;
+            (top, bottom) = region.GetRegionBounds (subregionIdx);
+            return (left, right, bottom, top);
+        }
+
+        public void FitColliderToSubRegion (BoxCollider collider) {
+            var bounds = GetCurrentSubRegionBounds ();
+            var upperLeft = new Vector2 (bounds.left, bounds.top);
+            var lowerRight = new Vector2 (bounds.right, bounds.bottom);
+            collider.position = (upperLeft + lowerRight) * 0.5f;
+            collider.size = (lowerRight - upperLeft);
+            //Console.WriteLine (collider.position + " " + collider.size);
+        }
+
+        public bool IsCurrentSubRegionActive () {
+            return aamesh.GetRegionByIdx (regionIdx).region.IsRegionActive (subregionIdx);
+        }
+
+        public void Next () {
+            if (IsFinished ()) return;
+
+            var regionValues = aamesh.GetRegionByIdx (regionIdx);
+            (float regionTop, float regionBottom) = regionValues.region.GetRegionBounds (subregionIdx);
+
+            if (regionBottom < bottom) {
+                subregionIdx++;
+            }
+            else {
+                regionIdx++;
+                if (IsFinished ()) return;
+                subregionIdx = aamesh.GetRegionByIdx (regionIdx).region.GetRegionIdx (top);
+            }
+            //---
+            /*subregionIdx++;
+            bool passedEnd;
+            var subRegion = aamesh.GetRegionByIdx (regionIdx);
+            if (subregionIdx < subRegion.region.Count) {
+                passedEnd = bottom < subRegion.start;
+            }
+            else { passedEnd = true; }
+            if (passedEnd) {
+                regionIdx++;
+                if (IsFinished ()) return;
+                subRegion = aamesh.GetRegionByIdx (regionIdx);
+                subregionIdx = subRegion.region.GetRegionIdx (top);
+            }*/
+        }
     }
+
 
 }

@@ -100,27 +100,25 @@ public static class Program {
             if (Raylib.IsKeyDown (KeyboardKey.S)) {
                 dir.Y += 1;
             }
+            int iterations = 0;
             for (int axis = 0; axis < 2; axis++) {
                 coll.position[axis] += dir[axis] * dt * 60;
-                Console.WriteLine ("Loop");
-                for (int region = ev.GetRegionIdx(coll.position.X - coll.size.X*1.1f); region < ev.RegionCount - 1; region++) {
-                    //Console.WriteLine ($"{region} {ev.RegionCount}");
-                    (float lower, float upperBound, RegionSet1D subRegionObject) = ev.GetRegionByIdx (region);
-                    Console.WriteLine ($"\tRegion: {region} {ev.RegionCount} starts at {subRegionObject.GetRegionIdx (coll.position.Y - coll.size.Y*2f)}, {ev.SubRegionCount (region)} {subRegionObject.Count}");
-                    //Console.WriteLine ($"{coll.position.X + coll.size.X*1.2f} {lower}");
-                    if (coll.position.X + coll.size.X*1.1f <= lower) break;
-                    for (int subRegion = subRegionObject.GetRegionIdx(coll.position.Y - coll.size.Y*1.1f); subRegion < ev.SubRegionCount (region); subRegion++) {
-                        Console.WriteLine ($"\t\tSubRegion: {subRegion} {subRegionObject.Count}");
-
-                        if (!subRegionObject.IsRegionActive (subRegion)) continue;
-                        ev.SubRegionBox (wallCollider, region, subRegion);
-                        if (coll.position.Y + coll.size.Y*1.1f < wallCollider.position.Y - wallCollider.size.Y) break;
-                        if (Collision.CheckIntersection (coll, wallCollider)) {
-                            coll.AlignEdge (wallCollider, axis);
-                        }
+                //Console.WriteLine ("Loop");
+                for (var iter = new AAMeshIterator (ev, coll, 1.5f); !iter.IsFinished (); iter.Next ()) {
+                    var bounds = iter.GetCurrentSubRegionBounds ();
+                    if (!iter.IsCurrentSubRegionActive ()) continue;
+                    iterations++;
+                    //Console.WriteLine ($"{bounds} center {new Vector2(bounds.left + bounds.right, bounds.top + bounds.bottom) * 0.5f} {-new Vector2(bounds.left - bounds.right, -bounds.top + bounds.bottom)}");
+                    iter.FitColliderToSubRegion (wallCollider);
+                    if (Collision.CheckIntersection (coll, wallCollider)) {
+                        coll.AlignEdge (wallCollider, axis);
                     }
                 }
+                
+                
             }
+            Console.WriteLine (iterations / 2);
+
             Raylib.DrawRectangleV (coll.position - coll.size / 2, coll.size, Color.Red);
             Raylib.EndDrawing ();
 

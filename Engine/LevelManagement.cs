@@ -2,16 +2,16 @@ using System;
 using System.Numerics;
 
 namespace Engine {
-    public struct TileBP {
+    /*public struct TileBP {
         public Vector2 position;
         public string metaData;
-    }
+    }*/
 
     public class LevelBP {
         public Dictionary<char, List<Vector2>> layout = new Dictionary<char, List<Vector2>>();
         //public Dictionary<char, List<Vector2>> layout = new Dictionary<char, List<Vector2>> ();
 
-        public object[] metaData;
+        //public object[] metaData;
 
 
 

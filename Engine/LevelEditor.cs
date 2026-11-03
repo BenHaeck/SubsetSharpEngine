@@ -6,6 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Raylib_cs;
 namespace Engine {
+
+    public abstract class LevelEditorTool {
+        char[] validTiles;
+
+        public virtual void OnSelect () {}
+        public virtual void OnDeselect () {}
+
+        public abstract void Update (Vector2 cursorPos, float dt);
+
+        public virtual void Draw () { }
+    }
     
     public abstract class LevelEditor : GameState {
 
